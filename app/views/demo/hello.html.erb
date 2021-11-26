@@ -1,0 +1,23 @@
+<h1>Demo </h1>
+<p>Hello!!! from hello</p>
+
+<%= "#{@num}" %>
+
+<%=
+  3.times do |n|
+    puts n
+  end
+%>
+
+<%= link_to('Index page', {:action =>'index'}) %><br/>
+
+
+<%="id:  #{@id} "%><br/>
+
+<%="page: #{@page} " %><br/>
+
+Sum: <%= @id.to_i + @page.to_i %>
+<br/>
+Next Page: <%= link_to('Hello page two with params', {:action =>'hello', :page=>@page.to_i + 1, :id=>20}) %><br/>
+
+<br/>
