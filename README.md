@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## **Code for the course Ruby on Rails 5 Essential Training**
+
+https://www.linkedin.com/learning/ruby-on-rails-5-essential-training/
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.6.3p62
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
