@@ -15,7 +15,9 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = Subject.new(subject_param)
+    set_last_position
     if @subject.save
+      flash[:notice] = "Subject created successfully."
       redirect_to(subjects_path)
     else
       render('new')
@@ -28,7 +30,9 @@ class SubjectsController < ApplicationController
 
   def update
     @subject = Subject.find(params[:id])
+    set_last_position
     if @subject.update(subject_param)
+      flash[:notice] = "Subject updated successfully."
       redirect_to(subject_path(@subject))
     else
       render('edit')
@@ -37,16 +41,25 @@ class SubjectsController < ApplicationController
 
   def delete
     @subject = Subject.find(params[:id])
-    @subject.destroy
-    redirect_to(subjects_path)
   end
 
   def destroy
-
+    @subject = Subject.find(params[:id])
+    @subject.destroy
+    flash[:notice] = "Subject #{@subject.name} destroyed successfully."
+    redirect_to(subjects_path)
   end
 
   def subject_param
     params.require(:subject).permit(:name, :position, :visible)
+  end
+
+  private
+
+  def set_last_position
+    if @subject.position.nil?
+      @subject.position = Subject.sorted.last.position.to_int + 1
+    end
   end
 
 end

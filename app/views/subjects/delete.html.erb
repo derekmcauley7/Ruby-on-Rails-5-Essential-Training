@@ -1,4 +1,17 @@
-<h1>Subjects Delete</h1>
-<p>Subject <%= @subject.name %> has been deleted</p>
+<%= link_to("<< Back to List", subjects_path, :class => 'back-link') %>
 
-<%= link_to("Back to Index", subjects_path) %>
+<div class="subjects delete">
+  <h2>Delete Subject</h2>
+
+  <%= form_for(@subject, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this subject?</p>
+
+    <p class="reference-name"><%= f.object.name %></p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Subject") %>
+    </div>
+
+  <% end %>
+</div>
