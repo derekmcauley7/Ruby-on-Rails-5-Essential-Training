@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_123116) do
     t.string "name", limit: 100
     t.integer "position"
     t.boolean "visible", default: true
-    t.string "contect_type"
-    t.text "context"
+    t.string "content_type"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["page_id"], name: "index_sections_on_page_id"
