@@ -1,5 +1,6 @@
-<%= link_to("<< Back to List", subjects_path, :class => 'back-link') %>
 
+<% @page_title = "Edit #{@subject.name}" %>
+<%= link_to("<< Back to List", subjects_path, :class => 'back-link') %>
 <div class="subjects edit">
   <h2>Update Subject</h2>
 
