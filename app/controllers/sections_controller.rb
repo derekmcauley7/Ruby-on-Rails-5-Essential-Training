@@ -2,7 +2,11 @@ class SectionsController < ApplicationController
 
   layout 'admin'
 
+  before_action :get_pages, :only => [:new, :create, :edit, :update]
+  before_action :get_session_count, :only => [:new, :update, :create, :edit]
+
   def index
+    logger.debug("****** Testing the logger. ******")
     @sections = Section.sorted
   end
 
@@ -11,34 +15,24 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section_count = Section.count + 1
-    @pages = Page.sorted
     @section = Section.new
   end
 
   def create
-    @section_count = Section.count + 1
-    @pages = Page.sorted
     @section = Section.new(section_params)
     if @section.save
       flash[:notice] = "Section created successfully."
       redirect_to(sections_path)
     else
-      @section_count = Section.count + 1
-      @pages = Page.sorted
       render('new')
     end
   end
 
   def edit
-    @section_count = Section.count
-    @pages = Page.sorted
     @section = Section.find(params[:id])
   end
 
   def update
-    @section_count = Section.count + 1
-    @pages = Page.sorted
     @section = Section.find(params[:id])
     if @section.update(section_params)
       flash[:notice] = "Section updated successfully."
@@ -57,6 +51,21 @@ class SectionsController < ApplicationController
     @section.destroy
     flash[:notice] = "Section destroyed successfully."
     redirect_to(sections_path)
+  end
+
+  private
+
+  def get_session_count
+    @section_count = Section.count
+    if params[:action] == 'new' || params[:action] == 'create' || params[:action] == 'update'
+      @section_count + 1
+    end
+  end
+
+  private
+
+  def get_pages
+    @pages = Page.sorted
   end
 
   private

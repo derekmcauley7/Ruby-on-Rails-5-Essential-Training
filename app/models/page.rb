@@ -13,6 +13,6 @@ class Page < ApplicationRecord
                   :length => {:maximum => 255}
   validates :permalink, :presence => true,
                         :uniqueness => true,
-                        :length => {:within => 2.355}
+                        :length => {:within => 2..355}
 
 end
