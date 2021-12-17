@@ -5,6 +5,8 @@ class AdminUser < ApplicationRecord
   has_many :section_edits
   has_many :sections, :through => :section_edits
 
+  has_secure_password
+
   EMAIL_REG = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 
   FORBIDDEN_USERNAMES = %w[humtydumpty sexy1111 mr.robt]
