@@ -26,6 +26,10 @@ class AdminUser < ApplicationRecord
                     :uniqueness => true,
                     :format => { :with => EMAIL_REG},
                     :confirmation => true
+  scope :sorted, lambda { order("first_name ASC") }
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   private
 
