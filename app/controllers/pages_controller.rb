@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    @page_count = Page.count +1
+    @page = Page.find(params[:id])
     if @page.update(page_params)
       flash[:notice] = "Page updated successfully."
       redirect_to(page_path(@page))
